@@ -1,0 +1,9 @@
+-- The max() function returns the maximum vlaue of a column.
+-- The min() function returns the minimum value of a column.
+
+select *
+from customers
+where age = ( 
+   select min(age)
+   from customers
+   );
