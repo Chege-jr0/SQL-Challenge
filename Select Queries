@@ -1,0 +1,15 @@
+-- offset keyword is used with the limit to specify the starting rows from where to select the data
+select first_name, last_name
+FROM customer_data
+limit 2 offset 9;
+
+-- The top keyword is used to fetch the first two top rows 
+SELECT TOP 2 *
+FROM customer_data;
+
+-- The fetch firts 2 rows fetches the firts 2 rows with oracle databases
+select * 
+from customers_data
+fetch first 2 rows only;
+
+select * from customer_data
