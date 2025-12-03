@@ -1,0 +1,11 @@
+-- Count function returns the number of records returned by a query
+-- Count with where to count rows that match the given value.
+
+select count(country)
+from customers
+where country = 'UK'
+
+-- If we need to count the number of unique rows, we can use the count() function with the distinct clause
+
+select count(distinct country)
+from customers;
