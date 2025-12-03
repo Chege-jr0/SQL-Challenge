@@ -1,0 +1,45 @@
+-- Order by Clause is used to sort the result set in ascending or descending order
+-- The default order by sorts the query in ascending order
+-- When we say ascending order in the alphabets, its chronological.
+-- The command order by comes after the query from such table and you can further specialise by setting to desc
+SELECT *
+FROM customers
+ORDER BY age;
+
+
+-- You can order by with mutiple columns
+-- The query works in such a way that, if there are duplicates in the first name, it sorts them based on age.
+SELECT * 
+FROM customers
+ORDER BY first_name, age;
+
+-- You can also use the order by with where clause
+SELECT last_name, age
+FROM customers
+WHERE NOT country = 'UK'
+ORDER BY last_name DESC;
+
+-- In sql, we use the GROUP BY clause to group rows based on the value of columns
+-- The group by clause is used in conjunction with aggregate functions such as min(), max(), sum() and count().
+
+select country, count(*) as number
+from customers
+group by country
+
+select customer_id, sum(amount) as total
+from orders 
+group by customer_id
+
+-- SQL GROUP BY Clause With JOIN
+-- We can also use the Group by clause with join clause
+-- For example we can join the customers and orders table
+--             select customer_id and first_name from Customers table
+--             also select the count of order ids from the Orders table
+--             group the result by customer_id
+
+SELECT Customers.customer_id, Customers.first_name,
+Count(Orders.order_id) AS order_count
+FROM Customers
+LEFT JOIN Orders
+ON Cutsomers.customer_id = Orders.customer_id
+GROUP BY Customers.customer_id;
