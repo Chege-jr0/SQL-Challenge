@@ -1,0 +1,17 @@
+-- IN SQL, is null ans is nit null are used to check if a column in a table contains a null value or not
+select column1, column2
+from table
+where column_name is null;
+
+-- In SQL, the is not null condition is used to select rows if the specifies field is not null
+select column1, column2
+from table 
+where column_name is not null;
+
+-- the is null and is not null can be used with emails
+
+-- You can use the is null with count()
+
+select count(*)
+from employee
+where email is null;
