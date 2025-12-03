@@ -1,0 +1,12 @@
+-- In SQL, the between operator with the where clause selects values within a given range
+select column1, column2
+from customer_data
+where column between value1 and value2;
+
+-- The not between operator is used to exclud the rows that match in the range. It returns all the rows except the excluded rows
+select column1, column2
+from customer_data
+where column not between value1 and value2;
+
+-- The between and not between can be used to with text too.
+-- The between and not between can also be used with dates.
