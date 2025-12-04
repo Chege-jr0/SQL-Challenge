@@ -1,0 +1,28 @@
+-- The SQL CASE statement evaluates a list of conditions and adds a column with values based on the condition.
+-- The case statement creates another column classifying the rows based on columns.
+select * from employee
+
+SELECT *,
+CASE 
+WHEN salary >= 100000 THEN 'High Salary'
+WHEN  salary < 100000 THEN 'Average Salary'
+END 
+AS 'SALARY RANGE'
+FROM employee
+
+-- The case function is closed with an END  and given an alias.
+-- The cases can have an else if the conditions do not cover the whole table.
+
+Challenge:
+Write an SQL query to find the total viewership for a device.
+Suppose you have a table named Viewership. The schema of this table is as follows:
+it has four columns: user_id, course_name, device_type, view time, 
+
+Write a query to find the total viewership of laptops and mobile devices, where mobile is defined as the sum of tablet and phone
+
+select *,
+CASE 
+WHEN device_type = 'laptop' THEN 'laptop'
+WHEN device_type = 'phone' AND 'tablet' THEN 'mobile'
+  END AS 'device_category'
+  FROM Viewership
