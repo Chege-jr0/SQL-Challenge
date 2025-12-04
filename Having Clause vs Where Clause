@@ -1,0 +1,35 @@
+-- The SQL having clause is used if we need to filter the result based on aggregate functions 
+-- That is max(), min(), avg() and count().
+
+
+SELECT AggFunc (column), extra-columns
+FROM table
+GROUP BY target_column
+HAVING condition
+
+-- The HAVING clause was introdued because the where clause does not support aggregate functions.
+-- The HAVING clause is executed after the GROUP BY clause while the WHERE clause is executed before the GROUP BY clause.
+
+-- For Example 
+-- We want to write a query to filter out rows with employees having a salary of more than 100,000
+SELECT * FROM employee
+
+SELECT * 
+FROM employee
+where salary > 100000
+
+-- But with the HAVING clause, we can use an aggregate function like AVG salary.
+SELECT *y
+FROM employee
+GROUP BY emp_id 
+HAVING AVG(salary) > 100000
+
+Challenge
+You have a table called Employees with the following columns 
+employee_id, first_name, last_name and department
+Your task is to write a query to find the duplicate of the first_names
+
+SELECT first_name, COUNT(*) AS name_count
+FROM Employees
+GROUP BY first_name
+HAVING count(*) > 1
