@@ -1,0 +1,40 @@
+-- A common Table Expression is a temporary result set in SQL that we can reference within a SELECT, INSERT, UPDATE or DELETE statement.
+-- CTE,s make complex queries more readable and maintaneable.
+-- Start with the keyword WITH and give it a name.
+
+WITH FemaleEmployees AS (
+     SELECT * FROM employee WHERE sex = 'F'
+     )
+SELECT * FROM FemaleEmployees     
+
+-- CTE With WHERE Clause
+-- CTE,s can be used in conjunction with a WHERE clause to filter results in a more structured way.
+
+WITH HighPay AS (
+SELECT * FROM employee
+WHERE salary > 65000
+)
+select * from HighPay
+where first_name like 'D%'
+
+-- CTE,s with JOIN
+-- CTEs can be effectively used with JOIN to simplify complex joins across mutiple tables.
+WITH CustomerOrders AS (
+     SELECT C.customer_is, O.item
+     FROM Customers C
+     JOIN Orders O ON C.customer_id = O.customer_id
+)
+SELECT * FROM employee
+
+-- CTE,s with UPDATE statement
+-- CTE,,s can also be used within UPDATE statements for updating data based on complex criteria
+-- The CTE below updates the sex column to male for all the ladies by setting the sex to be Male and the table is altered.
+ WITH FemaleToEmployees AS (
+     SELECT * FROM employee 
+     WHERE sex = 'F'
+     )
+ UPDATE employee 
+ set sex =  'M'
+ where emp_id IN (select emp_id from FemaleToEmployees);
+ 
+SELECT * FROM employee  
