@@ -1,0 +1,29 @@
+-- In SQL, the UNION operator selects fields from two or more tables but it does not include duplicates.
+-- In SQL, the UNION ALL operator selects fields from two or more tables but it includes duplicates.
+
+-- The SQL UNION and UNION ALL with the WHERE clause
+select age, name 
+from Teachers
+where age >= 20
+union all
+select age, name 
+from students
+where age >= 20
+
+Challenge
+Suppose you are working as a backend engineer at an e-commerce company that maintains a table named Customers. The schema of this table is as follows:
+it has two columns Customer_id and Customer_name
+Write a query that gets the missing id,s;
+Logic = Generate all ids - Existing ids
+WITH RECURSIVE all_ids AS (
+    SELECT MIN(customer_id) AS id, MAX(customer_id) AS max_id
+    FROM Customers
+    UNION ALL
+    SELECT id + 1, max_id
+    FROM all_ids
+    WHERE id < max_id
+)
+SELECT id AS missing_id
+FROM all_ids
+WHERE id NOT IN (SELECT customer_id FROM Customers)
+ORDER BY id;
