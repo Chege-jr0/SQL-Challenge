@@ -1,0 +1,14 @@
+select * from customer_data
+-- In SQL, a select statement may contain another SQL statement, known as subquery or nested subquery.
+SELECT column FROM table 
+WHERE column operator (
+  SELECT column from table
+  );
+
+-- For Example
+select * 
+from customers
+where age =  (
+    select min(age)
+    from customers
+);
