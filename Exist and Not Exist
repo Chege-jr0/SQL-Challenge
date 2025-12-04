@@ -1,0 +1,28 @@
+-- The Sql Exists operator tests the existence of any value in a subquery i.e it executes the outer SQL query only if the subquery is not NULL
+
+SELECT column1, column2, 
+FROM table
+WHERE EXISTS(SUBQUERY);
+
+-- For example 
+SELECT first_name, last_name
+FROM Customers
+WHERE EXISTS (
+   SELECT order_id 
+   FROM Orders
+   WHERE Orders.customer_id = Customers.customer_id AND amount < 120000
+   );
+   
+-- Checks for the order_id of customers in the Orders table where amount is less than 120000
+-- Returns the customer_id and first_name of customers from the Customers table who have made a purchase of less than 120000
+
+-- We can also use the NOT operator to inverse the working of the EXISTS clause.
+-- For example 
+SELECT first_name, last_name
+FROM Customers
+WHERE NOT EXISTS (
+   SELECT order_id 
+   FROM Orders
+   WHERE Orders.customer_id = Customers.customer_id AND amount < 120000
+   );
+-- Here, the SQL command returns a row from the Customers table if the related row is not in the Orders table.
