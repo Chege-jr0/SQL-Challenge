@@ -1,0 +1,23 @@
+-- In SQL, Views contain rows and columns similar to a table, however views dont hold the actual data.
+-- You can think of a view as a virtual table environment that,s created from one or more tables that,s easier to work with data.
+
+select * from customer_data
+
+-- creating a view 
+CREATE VIEW us_customers AS
+select first_name, last_name
+from customer_data;
+
+-- selecting everything from the view
+select * from us_customers
+
+-- Updating a view 
+CREATE OR REPLACE VIEW us_customers AS
+SELECT *
+FROM customer_data
+WHERE last_name LIKE 'Doe'
+
+-- Deleting a View
+DROP VIEW us_customers;
+
+-- We can join tables on a view and work on the data from there.
