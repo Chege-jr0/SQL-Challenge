@@ -1,0 +1,45 @@
+-- we use the like operator with the where clause to get the resukt that matches the given string problem
+-- keep in mind the % and _ wildcards when using the like operator.
+
+select *
+from customers
+where country like 'UK'
+
+-- the sql not like operator
+select *
+from customers
+where country not like 'usa'
+-- here the sql command selects all the rows that do no have usa in the country column
+-- They can get as complicated as possible with the and or operators
+
+
+
+-- WILDCARDS
+-- The _ is a wildcard character that represents one character after a string
+select *
+from customers
+where country like 'US_'
+
+-- The query will return the results that have USA or USD JUST one character after that.
+
+
+-- The % is a wildcard character when used can be used to filter the name which is followed
+select *
+from customers
+where country like 'U%';
+
+-- The query will return the countries  starting with the character U
+
+-- The [] is used to represent any one character inside brackets
+select * 
+from customers
+where country like 'U[KA]%';
+
+-- The query will return the rows that have country starts with U and is followed by either K or A
+
+-- The ! wildcard in SQL is used to exclude characters from  a string
+select * 
+from customers 
+where last_name like '[!DR]%';
+
+-- The query selects rows whose last_name does not start with D or R
