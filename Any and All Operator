@@ -1,0 +1,41 @@
+-- The SQL ANY compares a value of the first table with all values of the second table and retuns the row if there is a match with any value.
+SELECT column
+FROM table1
+WHERE column OPERATOR ANY (
+   SELECT column 
+   FROM table2
+);
+
+-- Suppose we want to find teachers whose age is similar to any of the student,s age.
+SELECT * 
+FROM Teachers 
+WHERE age =  ANY (
+    SELECT age
+    FROM Student
+);
+
+-- We can use the =, < and > with the ANY and ALL keywords 
+SELECT * 
+FROM Teachers 
+WHERE age < ANY (
+    SELECT age
+    FROM Student
+);
+-- The query will select rows if age in the outer query is less than any age in a subquery.
+
+-- The SQL ALL operator
+-- The SQL ALL operator compares a value of the first table with all the values of the second table and returns the row if there is a match with all values.
+SELECT column
+FROM table1
+WHERE column OPERATOR ALL (
+    SELECT column 
+    FROM table2
+);
+
+SELECT *
+FROM Teachers
+WHERE age > ALL (
+      SELECT age
+      FROM Students
+	);
+-- The query above returns teachers with ages which match all the student ages.
