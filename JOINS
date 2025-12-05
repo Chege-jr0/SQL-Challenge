@@ -46,3 +46,10 @@ SELECT b.partner_id, j.location_id, v.village_id
 FROM beneficiary_partner_data b
 CROSS JOIN jurisdiction_hierarchy j
 CROSS JOIN village_locations v;
+
+-- In SQL, Self Join allows us to join a table with itself, creating a relationship between rows within the same table.
+
+SELECT columns
+FROM table1 T1,
+JOIN table1 T2 ON 
+WHERE condition;
