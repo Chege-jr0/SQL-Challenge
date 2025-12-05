@@ -1,0 +1,44 @@
+-- The SQL Command to show the databases in SQLlite
+SHOW DATABASES
+
+-- SELECT INTO command creates a new table in the current database.
+-- The Syntax of the SQL SELECT INTO statement is 
+SELECT column1, column2, 
+INTO destination_table
+FROM source_table;
+
+-- You can go further and copy data from one table to another in another database.
+-- We can do that by using the IN clause 
+-- The Syntax is 
+SELECT *
+INTO destination_table
+in destination_database.mdb
+FROM source_table. 
+
+-- You can copy records from one table to another existing table.
+-- Syntax 
+INSERT INTO destination_table ( column1, column2)
+SELECT column1, column2, column3
+FROM source_table;
+
+-- Copy data from Two Tables to One
+-- We can also copy records from two different tables using the JOIN clause with INSERT INTO SELECT
+
+INSERT INTO CustomersOrders
+SELECT Customers.customer_id, Customers.first_name, Orders.amount
+FROM Customers
+JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+-- SQL, DELETE AND TRUNCATE
+-- In SQL, the DELETE clause is used to delete row from a database table
+-- Syntax
+DELETE FROM table_name
+[WHERE condition];
+
+-- In SQL, the TRUNCATE TABLE clause is another way to delete all rows from a table at once.
+-- The DELETE supports the WHERE clause while the TRUNCATE doesn,t.
+-- The DELETE can remove single mutiple, or all rows from  a table, while a TRUNCATE can only remove all the records from a table.
+
+-- Syntax
+TRUNCATE TABLE Customers;
