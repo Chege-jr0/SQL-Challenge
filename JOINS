@@ -1,0 +1,48 @@
+select * from beneficiary_partner_data;
+select * from jurisdiction_hierarchy;
+select * from village_locations;
+
+-- The SQL inner join statement joins two tables based on a common column and selects rows that have matching values in this columns
+-- Syntax
+SELECT columns
+FROM table1
+INNER JOIN table2
+ON table1.column1 = table2.column2
+
+-- The SQL Left join statement combines two tables based on a common column. It then selects records having matching values in these columns and the remaining rows from the left table.
+-- Syntax
+SELECT columns
+FROM table1
+LEFT JOIN table2
+ON table1.column1 = table2.column2
+
+-- The SQL Right join statement combines two tables based on a common column. It then slects records having matching values in these columns and the remaining rows from the right table.
+-- Syntax
+SELECT columns
+FROM table1
+RIGHT JOIN table2
+ON table1.column1 = table2.column2
+
+-- The SQL Full Outer Join statement joins two tables based on a common column. It then selects records having matching values in these columns and the remaining rows from both of the tables
+-- Syntax
+SELECT columns
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column1 = table2.column2
+
+-- In SQL, the CROSS JOIN operation allows us to combine rows from two or more tables without any specific relatiosngip between them 
+-- You can CROSS JOIN with more than two tables.
+ -- Syntax
+SELECT columns,
+FROM table 
+CROSS JOIN table;
+
+-- Example
+SELECT *
+FROM village_locations
+CROSS JOIN jurisdiction_hierarchy;
+
+SELECT b.partner_id, j.location_id, v.village_id
+FROM beneficiary_partner_data b
+CROSS JOIN jurisdiction_hierarchy j
+CROSS JOIN village_locations v;
